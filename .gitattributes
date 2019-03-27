@@ -1,0 +1,74 @@
+################################################################################
+# Pro Motion PureBasic                                                         #
+# https://github.com/tajmone/pmotion-purebasic                                 #
+################################################################################
+
+* text=auto
+
+### PureBasic
+#############
+*.pb   text
+*.pbf  text
+*.pbi  text
+*.pbp  text
+*.cfg  text
+
+### scripts
+###########
+*.bat  text eol=crlf
+*.sh   text eol=lf
+
+### docs
+################
+*.adoc      text
+*.asciidoc  text
+*.md        text
+*.txt       text
+LICENSE     text
+
+### configuration
+####################
+*.cnf           text
+*.conf          text
+*.config        text
+*.ini           text
+*.prefs         text
+.editorconfig   text
+.gitattributes  text
+.gitconfig      text
+.gitignore      text
+.gitmodules     text
+
+### executables
+###############
+*.dll  binary
+*.exe  binary
+
+### archives
+#############
+*.7z   binary
+*.tar  binary
+*.zip  binary
+
+### graphics
+##############
+*.bmp   binary
+*.gif   binary
+*.ico   binary
+*.jpeg  binary
+*.jpg   binary
+*.png   binary
+*.svg   binary
+
+# ========================
+# GitHub Linguist Settings
+# ========================
+
+### PureBasic
+#############
+*.cfg  linguist-generated=true
+*.pbf  linguist-language=PureBasic
+*.pbp  linguist-generated=true
+*.pbp  linguist-language=XML
+
+# EOF #
