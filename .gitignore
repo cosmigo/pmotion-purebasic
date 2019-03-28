@@ -3,9 +3,6 @@
 # https://github.com/tajmone/pmotion-purebasic                                 #
 ################################################################################
 
-*.exe
-*.dll
-
 *.lnk
 *.url
 
@@ -15,6 +12,13 @@
 *.pbi.cfg
 *.pbp
 project.cfg
+
+### Compiler output
+###################
+*.dll
+*.exe
+*.exp
+*.lib
 
 ### TMP Work Files
 ##################
