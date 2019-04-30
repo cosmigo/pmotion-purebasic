@@ -1,0 +1,20 @@
+A fake image for testing a fake plugin.
+
+Needed to trick PM NG file dialog into loading/importing an image file, in order
+to test the FAKE plugin; the plugin will ultimately ignore the file contents.
+
+Just an escamotage to obtain a valid file pointer for the FAKE plugin and bypass
+the file dialog -- call it an "impostor" image, feeding Pro Motion a "placebo",
+an "interface trick", a "white lie" or even an "outright deception" if you will,
+but hey, it's called a *FAKE* plugin for a reason!
+
+
+ /"\/\_..---------------------------------------------------------------._/\/"\
+(     _||    "Physicians who claim that placebos are effective         ||_     )
+ \_/\/ ||     therapeutic agents ought to be anesthetized for          || \/\_/
+       ||     major surgery with placebos instead of anesthetics,      ||
+       ||     and treated for postoperative pain with placebos         ||
+       ||     instead of analgesics."                                  ||
+ /"\/\_|----------------------------------------------------------------|_/\/"\
+(     _|              -- Thomas Szasz (1920-2012), "Words to the Wise". |_     )
+ \_/\/ `----------------------------------------------------------------' \/\_/

@@ -1,6 +1,6 @@
 # Pro Motion PureBasic
 
-    Pro Motion NG 7.1.8 | PureBasic 5.70 LTS
+    Pro Motion NG 7.2.0 | PureBasic 5.70 LTS
 
 Cosmigo [Pro Motion NG] plugins interfaces in [PureBasic].
 
@@ -18,6 +18,8 @@ Copyright © 2019 Tristano Ajmone, [MIT License].
 - [Introduction](#introduction)
 - [Project Contents](#project-contents)
     - [The File I/O Boilerplate](#the-file-io-boilerplate)
+    - [The Logger Module](#the-logger-module)
+    - [Plugin Examples](#plugin-examples)
 - [Project Status](#project-status)
     - [About the Alpha Stage and Branch](#about-the-alpha-stage-and-branch)
 - [System Requirements](#system-requirements)
@@ -37,7 +39,11 @@ The goal of this project is to provide PureBasic boilerplates for creating Pro M
 
 # Project Contents
 
+- [`/PoC/`][PoC] — proof of concept plugins:
+    + [`/file-io/`][PoC file-io] — file I/O plugins:
+        * [`/fake/`][PoC fake] — "FAKE" plugin example.
 - [`pmotion_file-io.pbi`][fileio pb] — file I/O plugin boilerplate.
+- [`mod_logger.pbi`][mod_logger] — a developers' module that adds a log window to plugins.
 - [`LICENSE`][LICENSE] — MIT License.
 
 ## The File I/O Boilerplate
@@ -47,6 +53,20 @@ The goal of this project is to provide PureBasic boilerplates for creating Pro M
 The boilerplate is a code template to develop your custom file I/O on top of it. Although you can successfully compile the boilerplate into a DLL, it won't do anything useful unless you add to it some meaningful code (and most likely PMNG will complain about it when trying to register it, and fail to do so).
 
 Although the boilerplate sourcecode contain some useful comments, you'll still need to study the [File I/O Plugin Interface] documentation in order to create a plugin. Providing such documentation is beyond the scope of this project.
+
+## The Logger Module
+
+- [`mod_logger.pbi`][mod_logger]
+
+This module provides file I/O plugins with a logger Window that can be used to debug internal states and events during plugin development. The module exposes a few simple procedure to control the logger and print text to it.
+
+For a practical example of its usage, see the ["FAKE" plugin][PoC fake]:
+
+![screenshot log window][screenshot logger]
+
+## Plugin Examples
+
+Currently there's only the ["FAKE" plugin][PoC fake] example, mainly intended as a proof of concept demo and a reference for developers.
 
 # Project Status
 
@@ -140,10 +160,21 @@ For a discussion regarding PMNG plugin developements, see the following threads 
 [PureBasic]: https://www.purebasic.com/ "Visit PureBasic website"
 [MIT License]: ./LICENSE "View MIT License file"
 
+<!-- project folders -->
+
+[PoC]: ./PoC/ "Navigate to folder"
+[PoC file-io]: ./PoC/file-io/ "Navigate to folder"
+[PoC fake]: ./PoC/file-io/fake/ "Navigate to folder"
+
 <!-- project files -->
 
 [LICENSE]: ./LICENSE "View MIT License file"
 [fileio pb]: ./pmotion_file-io.pbi "View source file"
+[mod_logger]: ./mod_logger.pbi "View source file"
+
+<!-- screenshots -->
+
+[screenshot logger]: ./PoC/file-io/fake/screenshot_logger.png "Screenshot of the logger module window in the FAKE plugin"
 
 <!-- Cosmigo & PM -->
 
