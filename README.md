@@ -42,6 +42,7 @@ The goal of this project is to provide PureBasic boilerplates for creating Pro M
 - [`/PoC/`][PoC] — proof of concept plugins:
     + [`/file-io/`][PoC file-io] — file I/O plugins:
         * [`/fake/`][PoC fake] — "FAKE" plugin example.
+- [`/tests/`][tests] — misc. modules tests.
 - [`pmotion_file-io.pbi`][fileio pb] — file I/O plugin boilerplate.
 - [`mod_logger.pbi`][mod_logger] — a developers' module that adds a log window to plugins.
 - [`LICENSE`][LICENSE] — MIT License.
@@ -57,8 +58,9 @@ Although the boilerplate sourcecode contain some useful comments, you'll still n
 ## The Logger Module
 
 - [`mod_logger.pbi`][mod_logger]
+- [`mod_logger.md`][mod_logger Doc] — module documentation.
 
-This module provides file I/O plugins with a logger Window that can be used to debug internal states and events during plugin development. The module exposes a few simple procedure to control the logger and print text to it.
+This module provides file I/O plugins with a logger window that can be used to debug internal states and events during plugin development. The module exposes a few simple procedure to control the logger and print text to it.
 
 For a practical example of its usage, see the ["FAKE" plugin][PoC fake]:
 
@@ -162,15 +164,17 @@ For a discussion regarding PMNG plugin developements, see the following threads 
 
 <!-- project folders -->
 
-[PoC]: ./PoC/ "Navigate to folder"
-[PoC file-io]: ./PoC/file-io/ "Navigate to folder"
 [PoC fake]: ./PoC/file-io/fake/ "Navigate to folder"
+[PoC file-io]: ./PoC/file-io/ "Navigate to folder"
+[PoC]: ./PoC/ "Navigate to folder"
+[tests]: ./tests/ "Navigate to folder"
 
 <!-- project files -->
 
 [LICENSE]: ./LICENSE "View MIT License file"
 [fileio pb]: ./pmotion_file-io.pbi "View source file"
 [mod_logger]: ./mod_logger.pbi "View source file"
+[mod_logger Doc]: ./mod_logger.md "Read the documentation of Logger Module"
 
 <!-- screenshots -->
 

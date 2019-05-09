@@ -5,7 +5,7 @@
 ; *                         for Cosmigo Pro Motion NG                          *
 ; *                                                                            *
 ; ******************************************************************************
-#VERSION = "v0.0.6" ; ALPHA | 2019/04/30 | PureBasic 5.70 LTS x86
+#VERSION = "v0.0.7" ; ALPHA | 2019/05/09 | PureBasic 5.70 LTS x86
 
 ; Copyright (C) by Tristano Ajmone, 2019. Released under MIT License.
 ; ------------------------------------------------------------------------------
@@ -181,7 +181,7 @@ ProcedureDLL.boolean initialize(*language, *version.Unicode, *animation.Ascii)
   
   UILang$ = Chr(PeekA(*language)) + Chr(PeekA(*language +1))
   
-  If Not logger::CreateLogWindow("FAKE Puglin " + #VERSION)
+  If Not logger::OpenLogger("FAKE Puglin " + #VERSION)
     setError("FAKE Plugin failed to create log window!")
     ProcedureReturn #Failure
   EndIf
@@ -191,7 +191,7 @@ ProcedureDLL.boolean initialize(*language, *version.Unicode, *animation.Ascii)
          "*version    --> " + Str(#PLUGIN_INTERFACE_VERSION_USED) + #LF$ +
          "*animation  --> " + Str(#PLUGIN_SUPPORTS_ANIMATION)
   
-  logger::AddToLog(Log$)
+  logger::TSPrint(Log$)
   ProcedureReturn #Success
 EndProcedure
 
@@ -200,7 +200,7 @@ Prototype ProtoProgressCallback( progress.int32 ) ; progress is int32
 ProcedureDLL setProgressCallback( *progressCallback )
   progressCallback.ProtoProgressCallback = @*progressCallback
   CallBack$ = Hexify(*progressCallback)
-  logger::AddToLog("setProgressCallback( " + CallBack$ +" )")
+  logger::TSPrint("setProgressCallback( " + CallBack$ +" )")
 EndProcedure
 
 ;- /// Plugin Info ///
@@ -208,21 +208,21 @@ EndProcedure
 ProcedureDLL.strpointer getFileExtension()
   Log$ = "getFileExtension()" + #LF$ +
          ~"--> \"" + FILE_EXTENSION$ + ~"\""
-  logger::AddToLog(Log$)
+  logger::TSPrint(Log$)
   ProcedureReturn @FILE_EXTENSION$
 EndProcedure
 
 ProcedureDLL.strpointer getFileTypeId()
   Log$ = "getFileTypeId()" + #LF$ +
          ~"--> \"" + FILE_TYPE_ID$ + ~"\""
-  logger::AddToLog(Log$)
+  logger::TSPrint(Log$)
   ProcedureReturn @FILE_TYPE_ID$
 EndProcedure
 
 ProcedureDLL.strpointer getFileBoxDescription()
   Log$ = "getFileBoxDescription()" + #LF$ +
          ~"--> \"" + FILE_BOX_DESCRIPTION$ + ~"\""
-  logger::AddToLog(Log$)
+  logger::TSPrint(Log$)
   ProcedureReturn @FILE_BOX_DESCRIPTION$
 EndProcedure
 
@@ -231,28 +231,28 @@ EndProcedure
 ProcedureDLL.boolean isReadSupported()
   Log$ = "isReadSupported()" + #LF$ +
          "--> " + Bool2Str(#PLUGIN_SUPPORTS_READ)
-  logger::AddToLog(Log$)
+  logger::TSPrint(Log$)
   ProcedureReturn #PLUGIN_SUPPORTS_READ
 EndProcedure
 
 ProcedureDLL.boolean isWriteSupported()
   Log$ = "isWriteSupported()" + #LF$ +
          "--> " + Bool2Str(#PLUGIN_SUPPORTS_WRITE)
-  logger::AddToLog(Log$)
+  logger::TSPrint(Log$)
   ProcedureReturn #PLUGIN_SUPPORTS_WRITE
 EndProcedure
 
 ProcedureDLL.boolean isWriteTrueColorSupported()
   Log$ = "isWriteTrueColorSupported()" + #LF$ +
          "--> " + Bool2Str(#PLUGIN_SUPPORTS_WRITE_TRUECOLOR)
-  logger::AddToLog(Log$)
+  logger::TSPrint(Log$)
   ProcedureReturn #PLUGIN_SUPPORTS_WRITE_TRUECOLOR
 EndProcedure
 
 ProcedureDLL.boolean canExtractPalette()
   Log$ = "canExtractPalette()" + #LF$ +
          "--> " + Bool2Str(#PLUGIN_SUPPORTS_PALETTE_EXTRACT)
-  logger::AddToLog(Log$)
+  logger::TSPrint(Log$)
   ProcedureReturn #PLUGIN_SUPPORTS_PALETTE_EXTRACT
 EndProcedure
 
@@ -262,10 +262,10 @@ ProcedureDLL.strpointer getErrorMessage()
   Log$ = "getErrorMessage()" + #LF$ +
          "--> " 
   If PLUGIN_ERROR_MSG$ <> #Empty$
-    logger::AddToLog(Log$ + ~"\"" + PLUGIN_ERROR_MSG$ + ~"\"")
+    logger::TSPrint(Log$ + ~"\"" + PLUGIN_ERROR_MSG$ + ~"\"")
     ProcedureReturn @PLUGIN_ERROR_MSG$
   Else
-    logger::AddToLog(Log$ + ~"\"\" (no error)")
+    logger::TSPrint(Log$ + ~"\"\" (no error)")
     ProcedureReturn #Null
   EndIf
 EndProcedure
@@ -285,64 +285,64 @@ ProcedureDLL setFilename( *filename_pnt )
     Log$ + #LF$ + "(same as before)"
   EndIf
   FileName$ = NewFileName$
-  logger::AddToLog(Log$)
+  logger::TSPrint(Log$)
 EndProcedure
 
 ProcedureDLL.boolean loadBasicData()
   resetError ; -> This procedure can set error!
-  logger::AddToLog("loadBasicData()")
+  logger::TSPrint("loadBasicData()")
   ProcedureReturn #Success ; Fake succcess
 EndProcedure
 
 ProcedureDLL finishProcessing()
-  logger::AddToLog("finishProcessing()")
+  logger::TSPrint("finishProcessing()")
 EndProcedure
 
 ProcedureDLL.boolean canHandle() ; Returns: #Success/#Failure
   resetError                     ; -> This procedure can set error!
-  logger::AddToLog("canHandle()")
+  logger::TSPrint("canHandle()")
   ProcedureReturn #True 
 EndProcedure
 
 ;- /// File Load Procedures ///
 
 ProcedureDLL.boolean isAlphaEnabled()
-  logger::AddToLog("isAlphaEnabled()")
+  logger::TSPrint("isAlphaEnabled()")
   ProcedureReturn #False
 EndProcedure
 
 
 ProcedureDLL.int32 getWidth()
-  logger::AddToLog("getWidth()")
+  logger::TSPrint("getWidth()")
   ProcedureReturn 64 ; -> Assume a 64x64 pixel image
 EndProcedure
 
 ProcedureDLL.int32 getHeight()
-  logger::AddToLog("getHeight()")
+  logger::TSPrint("getHeight()")
   ProcedureReturn 64 ; -> Assume a 64x64 pixel image
 EndProcedure
 
 ProcedureDLL.int32 getImageCount() ; -> returns: int32
   resetError                       ; -> This procedure can set error!
-  logger::AddToLog("getImageCount()")
+  logger::TSPrint("getImageCount()")
   ProcedureReturn 1
 EndProcedure
 
 ProcedureDLL.pointer getRgbPalette()
   ; We don't have a palette to handle over! (need to create a fake one)
-  logger::AddToLog("getRgbPalette()")
+  logger::TSPrint("getRgbPalette()")
   ProcedureReturn #Null
 EndProcedure
 
 ProcedureDLL.int32 getTransparentColor() ; -> returns: int32
-  logger::AddToLog("getTransparentColor()")
+  logger::TSPrint("getTransparentColor()")
   ProcedureReturn -1                     ; -> No trasparent color
 EndProcedure
 
 ProcedureDLL.boolean loadNextImage()
   resetError ; -> This procedure can set error!
              ; We currently don't support this
-  logger::AddToLog(~"loadNextImage()\nSET ERROR!")
+  logger::TSPrint(~"loadNextImage()\nSET ERROR!")
   setError("PROCEDURE UNIMPLEMENTED: loadNextImage()")
   ProcedureReturn #Failure
 EndProcedure
@@ -351,13 +351,13 @@ EndProcedure
 
 ProcedureDLL.boolean beginWrite()
   resetError ; -> This procedure can set error!
-  logger::AddToLog("beginWrite()")
+  logger::TSPrint("beginWrite()")
   ProcedureReturn #Success ; Fake succcess
 EndProcedure
 
 ProcedureDLL.boolean writeNextImage()
   resetError ; -> This procedure can set error!
-  logger::AddToLog("writeNextImage()")
+  logger::TSPrint("writeNextImage()")
   ProcedureReturn #Success ; Fake succcess
 EndProcedure
 
@@ -379,11 +379,11 @@ EndProcedure
 ; ==============================================================================
 ; Some pending chores that must be fixed before first Beta is ready:
 
-; [ ] CreateLogWindow():
-;     [ ] If the editor gadget couldn't be created, the window should be closed
+; [x] OpenLogger():
+;     [x] If the editor gadget couldn't be created, the window should be closed
 ;         and the plugin made aware of the problem.
-; [ ] AddToLog():
-;     [ ] If the Log Window couldn't be created, the procedure shouldn't attempt
+; [x] TSPrint() & PPrint():
+;     [x] If the Log Window couldn't be created, the procedure shouldn't attempt
 ;         to update the editor gadget.
 
 ; ==============================================================================
