@@ -1,4 +1,4 @@
-; "pmotion_file-io.pb"        DRAFT v0.0.1 | 2019/03/28 | PureBasic 5.70 LTS x86
+﻿; "pmotion_file-io.pb"        DRAFT v0.0.1 | 2019/03/28 | PureBasic 5.70 LTS x86
 ; ******************************************************************************
 ; *                                                                            *
 ; *                             Cosmigo Pro Motion                             *

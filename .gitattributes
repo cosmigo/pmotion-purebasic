@@ -1,17 +1,27 @@
-################################################################################
-# Pro Motion PureBasic                                                         #
-# https://github.com/tajmone/pmotion-purebasic                                 #
-################################################################################
+##################################################
+#  Pro Motion PureBasic                          #
+#  https://github.com/tajmone/pmotion-purebasic  #
+##################################################
 
 * text=auto
 
 ### PureBasic
 #############
-*.pb   text
-*.pbf  text
-*.pbi  text
-*.pbp  text
-*.cfg  text
+[attr]PureBasic text linguist-language=PureBasic
+*.cfg   text linguist-generated=true
+*.pb    PureBasic
+*.pbf   PureBasic
+*.pbi   PureBasic
+*.pbp   linguist-language=XML linguist-generated=true
+
+### repository configuration
+############################
+.editorconfig    text eol=lf
+.travis.yml      text eol=lf
+.gitattributes   text eol=lf
+.gitconfig       text eol=lf
+.gitignore       text eol=lf
+.gitmodules      text eol=lf
 
 ### scripts
 ###########
@@ -24,7 +34,7 @@
 *.asciidoc  text
 *.md        text
 *.txt       text
-LICENSE     text
+LICENSE*    text
 
 ### configuration
 ####################
@@ -33,16 +43,13 @@ LICENSE     text
 *.config        text
 *.ini           text
 *.prefs         text
-.editorconfig   text
-.gitattributes  text
-.gitconfig      text
-.gitignore      text
-.gitmodules     text
 
 ### executables
 ###############
 *.dll  binary
 *.exe  binary
+*.exp  binary
+*.lib  binary
 
 ### archives
 #############
@@ -59,16 +66,5 @@ LICENSE     text
 *.jpg   binary
 *.png   binary
 *.svg   binary
-
-# ========================
-# GitHub Linguist Settings
-# ========================
-
-### PureBasic
-#############
-*.cfg  linguist-generated=true
-*.pbf  linguist-language=PureBasic
-*.pbp  linguist-generated=true
-*.pbp  linguist-language=XML
 
 # EOF #

@@ -1,6 +1,8 @@
 # Pro Motion PureBasic
+[![MIT License][License badge]][MIT License]&nbsp;
+[![Build Status][Travis badge]][Travis link]
 
-    Pro Motion NG 7.2.0 | PureBasic 5.70 LTS
+    Pro Motion NG 7.2.3.1 | PureBasic 5.70 LTS
 
 Cosmigo [Pro Motion NG] plugins interfaces in [PureBasic].
 
@@ -46,6 +48,7 @@ The goal of this project is to provide PureBasic boilerplates for creating Pro M
 - [`pmotion_file-io.pbi`][fileio pb] — file I/O plugin boilerplate.
 - [`mod_logger.pbi`][mod_logger] — a developers' module that adds a log window to plugins.
 - [`LICENSE`][LICENSE] — MIT License.
+- [`validate.sh`][validate.sh] — validate code styles.
 
 ## The File I/O Boilerplate
 
@@ -53,7 +56,7 @@ The goal of this project is to provide PureBasic boilerplates for creating Pro M
 
 The boilerplate is a code template to develop your custom file I/O on top of it. Although you can successfully compile the boilerplate into a DLL, it won't do anything useful unless you add to it some meaningful code (and most likely PMNG will complain about it when trying to register it, and fail to do so).
 
-Although the boilerplate sourcecode contain some useful comments, you'll still need to study the [File I/O Plugin Interface] documentation in order to create a plugin. Providing such documentation is beyond the scope of this project.
+Although the boilerplate source code contains some useful comments, you'll still need to study the [File I/O Plugin Interface] documentation in order to create a plugin. Providing such documentation is beyond the scope of this project.
 
 ## The Logger Module
 
@@ -84,14 +87,14 @@ Furthermore, the Alpha branch will contain the binary DLLs of the compiled demo 
 
 # System Requirements
 
-To create PMNG plugins with these boilerplates you'll need [PureBasic] v5.70 LTS x86, which is a commercial product by Fantaisie Software.
+To create PMNG plugins with these boilerplates you'll need the 32-bit edition of [PureBasic] for Windows, which is a commercial product by Fantaisie Software.
 
 ## Compiling File I/O Plugins
 
 File I/O plugins must be compiled with the following settings in the PureBasic IDE (or the command line):
 
 - Windows x86 (32 bit)
-- DLL executable, non threadsafe.
+- DLL executable, non thread-safe.
 
 Once you've compiled your plugin DLL, you only need to copy it into the `plugins` subfolder in the installation directory of Pro Motion. Depending on the bitness of your Windows operating system, the path of the `plugins` folder will be either:
 
@@ -136,7 +139,7 @@ SOFTWARE.
 
 # References
 
-For a discussion regarding PMNG plugin developements, see the following threads on [Cosmigo community forum]:
+For a discussion regarding PMNG plugin development, see the following threads on [Cosmigo community forum]:
 
 - [Amiga IFF Support]
 - [File I/O Plugins Questions]
@@ -152,15 +155,21 @@ For a discussion regarding PMNG plugin developements, see the following threads 
 
 - [Cosmigo website][Cosmigo]
 - [Pro Motion Community Forum][PM Forum]
-- [Pro Motion NG Documention][PM Docs]
+- [Pro Motion NG Documentation][PM Docs]
 - [Pro Motion NG Blog][PM Blog]
 
 <!-----------------------------------------------------------------------------
-                               REFERENCE LINKS                                
+                               REFERENCE LINKS
 ------------------------------------------------------------------------------>
 
 [PureBasic]: https://www.purebasic.com/ "Visit PureBasic website"
 [MIT License]: ./LICENSE "View MIT License file"
+
+<!-- badges -->
+
+[License badge]: https://img.shields.io/badge/License-MIT-blue
+[Travis badge]: https://travis-ci.com/tajmone/pmotion-purebasic.svg?branch=alpha
+[Travis link]: https://travis-ci.com/tajmone/pmotion-purebasic "Travis CI: EditorConfig validation status"
 
 <!-- project folders -->
 
@@ -172,9 +181,14 @@ For a discussion regarding PMNG plugin developements, see the following threads 
 <!-- project files -->
 
 [LICENSE]: ./LICENSE "View MIT License file"
-[fileio pb]: ./pmotion_file-io.pbi "View source file"
-[mod_logger]: ./mod_logger.pbi "View source file"
+[fileio pb]: ./pmotion_file-io.pbi "View PureBasic source file"
+[mod_logger]: ./mod_logger.pbi "View PureBasic source file"
 [mod_logger Doc]: ./mod_logger.md "Read the documentation of Logger Module"
+[.editorconfig]: ./.editorconfig "View EditorConfig settings file"
+[.gitattributes]: ./.gitattributes "View Git attributes settings file"
+[.gitignore]: ./.gitignore "View Git ignore settings file"
+[.travis.yml]: ./.travis.yml "View Travis CI settings file"
+[validate.sh]: ./validate.sh "View source script for code style validation"
 
 <!-- screenshots -->
 
@@ -187,7 +201,7 @@ For a discussion regarding PMNG plugin developements, see the following threads 
 [Pro Motion NG]: https://www.cosmigo.com/ "Visit Pro Motion NG website"
 [Pro Motion]: https://www.cosmigo.com/ "Visit Pro Motion website"
 
-[PM Docs]: https://www.cosmigo.com/promotion/docs/onlinehelp/main.htm "View Pro Motion NG documentation online"
+[PM Docs]: https://www.cosmigo.com/promotion/docs/onlinehelp/main.htm "View Pro Motion NG documentation on-line"
 [PM Forum]: https://community.cosmigo.com/ "Visit the Cosmigo community forum"
 [PM Blog]: https://www.cosmigo.com/blog "Visit Cosmigo official blog"
 
