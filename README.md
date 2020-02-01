@@ -63,7 +63,7 @@ Providing such documentation is beyond the scope of this project.
 
 ## The Logger Module
 
-- [`mod_logger.pbi`][mod_logger] — v.0.0.3
+- [`mod_logger.pbi`][mod_logger] — v.0.0.4
 - [`mod_logger.md`][mod_logger Doc] — module documentation.
 
 This module provides file I/O plugins with a logger window that can be used to debug internal states and events during plugin development.

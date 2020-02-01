@@ -1,6 +1,6 @@
 # The Logger Module
 
-- [`mod_logger.pbi`][mod_logger] — v.0.0.3
+- [`mod_logger.pbi`][mod_logger] — v.0.0.4
 
 This module provides file I/O plugins with a logger window that can be used to debug internal states and events during plugin development.
 The module exposes a few simple procedures to control the logger and print text to it.
@@ -24,13 +24,19 @@ The module exposes a few simple procedures to control the logger and print text 
 
 # Introduction
 
-During the development stage of file I/O plugin it's useful to have a logger window to show debugging information of the plugin internal states and which procedure are being called.
+During the development stage of a file I/O plugin it's useful to have a logger window to show debugging information of the plugin internal states, which procedure are being called and what information is being exchanged.
+
 Since plugins can only be tested as compiled DLLs executed by PMNG, using PureBasic debug functionality is not an option.
-For this reason I've created this PureBasic module to provide a logger window and some logging procedures.
+For this reason I've created this PureBasic module to provide an _ad hoc_ logger window, along with some friendly logging procedures.
 
 Here's a screenshot of a logger window used by the ["FAKE" plugin][PoC fake]:
 
 ![screenshot log window][screenshot logger]
+
+The logged text can be freely selected with the mouse and copied into the clipboard via <kbd>Ctrl</kbd>+<kbd>C</kbd>.
+The <kbd>&nbsp;COPY&nbsp;</kbd> button allows to quickly copy into the clipboard all of the logged contents; and the <kbd>&nbsp;CLEAR&nbsp;</kbd> button deletes all logged info, allowing users to restart tracking the plugin behaviour before import/export operations.
+
+The possibility to dump into the Logger info on a plugin internal variables and states, and being able to quickly copy and paste as plain text the whole log, or specific selections thereof, all add up to making the Logger module an essential tool for File I/O plugins development.
 
 # Usage Instructions
 

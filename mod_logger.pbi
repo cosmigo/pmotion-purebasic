@@ -1,4 +1,4 @@
-﻿; v.0.0.3-ALPHA | 2020/02/01 | PureBasic 5.71 LTS x86
+﻿; v.0.0.4-ALPHA | 2020/02/01 | PureBasic 5.71 LTS x86
 ; ******************************************************************************
 ; *                                                                            *
 ; *                        Plugin Logger Window Module                         *
@@ -55,18 +55,41 @@ Module logger
   Structure winInfoStruct
     WinID.i
     LogID.i
+    ClearID.i
+    CopyID.i
   EndStructure
   
   WinInfo.winInfoStruct
   
   Procedure LogWinResize()
     Shared WinInfo
+    ThisID = EventWindow()
     ResizeGadget(WinInfo\LogID, #PB_Ignore, #PB_Ignore,
-                 WindowWidth(EventWindow())  -20,
-                 WindowHeight(EventWindow()) -20)
+                 WindowWidth(ThisID)  -20,
+                 WindowHeight(ThisID) -55)
+    btnWidth = (WindowWidth(ThisID) -30)/2
+    ResizeGadget(WinInfo\ClearID, 10,
+                 WindowHeight(ThisID) -35,
+                 btnWidth, #PB_Ignore)
+    ResizeGadget(WinInfo\CopyID,
+                 btnWidth +20,
+                 WindowHeight(ThisID) -35,
+                 btnWidth, #PB_Ignore)
+  EndProcedure
+  
+  Procedure ButtonPressed()
+    Shared WinInfo
+    Select EventGadget()
+      Case WinInfo\ClearID
+        ClearLogger()
+      Case WinInfo\CopyID
+        SetClipboardText(GetGadgetText(WinInfo\LogID))
+    EndSelect
   EndProcedure
   
   ;- Log Window Settings: Hard coded
+  #LogWinMinWidth  = 250
+  #LogWinMinHeigth = 150
   #LogWinFlags = #PB_Window_MinimizeGadget | #PB_Window_MaximizeGadget |
                  #PB_Window_SizeGadget | #PB_Window_BorderLess
   
@@ -92,20 +115,31 @@ Module logger
         ProcedureReturn #Failure
       EndIf
     EndWith
-    
+    WindowBounds(WinInfo\WinID, #LogWinMinWidth, #LogWinMinHeigth, #PB_Ignore, #PB_Ignore)
+    SmartWindowRefresh(WinInfo\WinID, #True)
     ; Make the window sticky, otherwise it will be hidden behind PM NG:
     StickyWindow(WinInfo\WinID, #True) ;
+    
     If LoadFont(0, "Consolas", 10)
       SetGadgetFont(#PB_Default, FontID(0))
     EndIf
     
     With Settings
-      WinInfo\LogID = EditorGadget(#PB_Any, 10, 10, \WinWidth -20, \WinHeight -20, #PB_Editor_ReadOnly)
+      WinInfo\LogID = EditorGadget(#PB_Any, 10, 10, \WinWidth -20, \WinHeight -55, #PB_Editor_ReadOnly)
       If Not WinInfo\LogID
         CloseWindow(WinInfo\WinID)
         ProcedureReturn #Failure
       EndIf
       BindEvent(#PB_Event_SizeWindow, @LogWinResize())
+      
+      btnWidth = (\WinWidth -30)/2
+      
+      WinInfo\ClearID = ButtonGadget(#PB_Any, 10, \WinHeight -35, btnWidth, 25, "CLEAR")
+      BindGadgetEvent(WinInfo\ClearID, @ButtonPressed())
+      
+      WinInfo\CopyID = ButtonGadget(#PB_Any, btnWidth +20, \WinHeight -35, btnWidth, 25, "COPY")
+      BindGadgetEvent(WinInfo\CopyID, @ButtonPressed())
+      
     EndWith
     ProcedureReturn #Success
   EndProcedure
@@ -114,11 +148,17 @@ Module logger
     ; --------------------------------------------------------------------------
     ; Destroys the log window. Returns 1 on success, or 0 for failure.
     ; --------------------------------------------------------------------------
-    Shared WinInfo
+    Shared WinInfo, Settings
     
     If Not IsWindow(WinInfo\WinID)
       ProcedureReturn #Failure
     EndIf
+    
+    ; Preserve current window size on next OpenLogger() call:
+    With Settings 
+      \WinWidth = WindowWidth(WinInfo\WinID)
+      \WinHeight = WindowHeight(WinInfo\WinID)
+    EndWith
     
     CloseWindow(WinInfo\WinID)
     WinInfo\WinID = #NUL
@@ -181,10 +221,8 @@ Module logger
   EndProcedure
 EndModule ; logger
 
-; TODO: Add 'CLEAR' button.
-; TODO: Add 'COPY' button.
-; TODO: Add 'CLOSE' button.
-; TODO: When 'CLOSE' button is used, store logger dimensions and position in logger::Setting.
+; TODO: Add 'CLOSE' button, or enable close button in window Toolbar.
+; TODO: When Logger win closes, store logger dimensions and position in logger::Setting.
 ; TODO: Add a new option that allows print procs to open the logger window if 
 ;       it's closed, instead of just failing silently. The default behaviour
 ;       should remain unchanged though.
