@@ -5,7 +5,8 @@
 ; *                         for Cosmigo Pro Motion NG                          *
 ; *                                                                            *
 ; ******************************************************************************
-#VERSION = "v0.0.7" ; ALPHA | 2019/05/09 | PureBasic 5.70 LTS x86
+#PLUGIN_VER$ = "0.0.8" ; 2020/02/01 | ALPHA
+#PLUGIN_PB_VER = 571   ; PureBasic 5.71 LTS x86
 
 ; Copyright (C) by Tristano Ajmone, 2019. Released under MIT License.
 ; ------------------------------------------------------------------------------
@@ -28,6 +29,7 @@
 ;{******************************************************************************
 
 XIncludeFile "..\..\..\mod_logger.pbi"
+logger::Settings\WinTitle = "FAKE Puglin v" + #PLUGIN_VER$
 ; ------------------------------------------------------------------------------
 ;- Plugin Settings                                
 ; ------------------------------------------------------------------------------
@@ -110,13 +112,17 @@ EndMacro
 ;{==============================================================================
 
 ; ------------------------------------------------------------------------------
-; OS and Bitness Checks
+;- Check Compiler Settings
 ; ------------------------------------------------------------------------------
 CompilerIf #PB_Compiler_OS <> #PB_OS_Windows Or
            #PB_Compiler_Processor <> #PB_Processor_x86 Or
            #PB_Compiler_ExecutableFormat <> #PB_Compiler_DLL Or
            #PB_Compiler_Thread = #True
   CompilerError "WRONG COMPILER SETTINGS! Must be Windows DLL for x86 (32 bit) not threadsafe"
+CompilerEndIf
+
+CompilerIf #PB_Compiler_Version <> #PLUGIN_PB_VER
+  CompilerWarning ~"This plugin was tested only on PureBasic "+ #PLUGIN_PB_VER + "."
 CompilerEndIf
 
 ; ------------------------------------------------------------------------------
@@ -181,7 +187,7 @@ ProcedureDLL.boolean initialize(*language, *version.Unicode, *animation.Ascii)
   
   UILang$ = Chr(PeekA(*language)) + Chr(PeekA(*language +1))
   
-  If Not logger::OpenLogger("FAKE Puglin " + #VERSION)
+  If Not logger::OpenLogger()
     setError("FAKE Plugin failed to create log window!")
     ProcedureReturn #Failure
   EndIf
@@ -373,18 +379,6 @@ EndProcedure
 ;-                                 PLUGIN TODOS                                 
 ; *                                                                            *
 ;{******************************************************************************
-
-; ==============================================================================
-;                          IMPLEMENTATION FIX/COMPLETE                          
-; ==============================================================================
-; Some pending chores that must be fixed before first Beta is ready:
-
-; [x] OpenLogger():
-;     [x] If the editor gadget couldn't be created, the window should be closed
-;         and the plugin made aware of the problem.
-; [x] TSPrint() & PPrint():
-;     [x] If the Log Window couldn't be created, the procedure shouldn't attempt
-;         to update the editor gadget.
 
 ; ==============================================================================
 ;                                ADD NEW FEATURES                               

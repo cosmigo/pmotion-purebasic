@@ -1,4 +1,4 @@
-﻿; "pmotion_file-io.pb"        DRAFT v0.0.1 | 2019/03/28 | PureBasic 5.70 LTS x86
+﻿; "pmotion_file-io.pb"                                 DRAFT v0.0.2 | 2020/02/01
 ; ******************************************************************************
 ; *                                                                            *
 ; *                             Cosmigo Pro Motion                             *
@@ -6,6 +6,9 @@
 ; *                         File I/O Plugin Interface                          *
 ; *                                                                            *
 ; ******************************************************************************
+
+#PLUGIN_PB_VER = 571   ; PureBasic 5.71 LTS x86
+
 ; Copyright (C) 2019 by Tristano Ajmone, MIT License.
 ; https://github.com/tajmone/pmotion-purebasic
 ; ------------------------------------------------------------------------------
@@ -30,13 +33,25 @@ Global FILE_BOX_DESCRIPTION$ = "xxx etc" ; Extensions description (for UI)
 Global FILE_EXTENSION$ = "xxx"           ; File extension (without dot)
 
 ; ------------------------------------------------------------------------------
-; Hard-Coded Settings
+; Hard-Coded Plugin Settings
 ; ------------------------------------------------------------------------------
 ; Plugin interface internal settings (for maintainers of the PB interface only).
 
 ; At the moment there is only version "1" of the file plugin interface:
 #PLUGIN_INTERFACE_VERSION_USED = 1
+; ------------------------------------------------------------------------------
+;- Check Compiler Settings
+; ------------------------------------------------------------------------------
+CompilerIf #PB_Compiler_OS <> #PB_OS_Windows Or
+           #PB_Compiler_Processor <> #PB_Processor_x86 Or
+           #PB_Compiler_ExecutableFormat <> #PB_Compiler_DLL Or
+           #PB_Compiler_Thread = #True
+  CompilerError "WRONG COMPILER SETTINGS! Must be Windows DLL for x86 (32 bit) not threadsafe"
+CompilerEndIf
 
+CompilerIf #PB_Compiler_Version <> #PLUGIN_PB_VER
+  CompilerWarning ~"This plugin was tested only on PureBasic "+ #PLUGIN_PB_VER + "."
+CompilerEndIf
 ; ------------------------------------------------------------------------------
 ;- Global Strings for PMNG
 ; ------------------------------------------------------------------------------
@@ -92,19 +107,6 @@ EndMacro
 ;-                                  DLL Setup
 ; ==============================================================================
 
-; ------------------------------------------------------------------------------
-;- Compiler OS and Bitness Checks
-; ------------------------------------------------------------------------------
-CompilerIf #PB_Compiler_OS <> #PB_OS_Windows Or
-           #PB_Compiler_Processor <> #PB_Processor_x86 Or
-           #PB_Compiler_ExecutableFormat <> #PB_Compiler_DLL Or
-           #PB_Compiler_Thread
-  CompilerError "WRONG SETTINGS! Must be Windows DLL 32 bit non-threadsafe"
-CompilerEndIf
-
-CompilerIf #PB_Compiler_Version <> 570
-  CompilerWarning "This software was not tested with this PureBasic version."
-CompilerEndIf
 ; ------------------------------------------------------------------------------
 ;- Sharable Variables (for internal use)
 ; ------------------------------------------------------------------------------

@@ -1,8 +1,9 @@
 # Pro Motion PureBasic
+
+[![Pro Motion NG Version][PMNG badge]][Pro Motion NG]&nbsp;
+[![PureBasic Version][PB badge]][PureBasic]&nbsp;
 [![MIT License][License badge]][MIT License]&nbsp;
 [![Build Status][Travis badge]][Travis link]
-
-    Pro Motion NG 7.2.3.1 | PureBasic 5.70 LTS
 
 Cosmigo [Pro Motion NG] plugins interfaces in [PureBasic].
 
@@ -52,18 +53,21 @@ The goal of this project is to provide PureBasic boilerplates for creating Pro M
 
 ## The File I/O Boilerplate
 
-- [`pmotion_file-io.pbi`][fileio pb]
+- [`pmotion_file-io.pbi`][fileio pb] — v0.0.2
 
-The boilerplate is a code template to develop your custom file I/O on top of it. Although you can successfully compile the boilerplate into a DLL, it won't do anything useful unless you add to it some meaningful code (and most likely PMNG will complain about it when trying to register it, and fail to do so).
+The boilerplate is a code template to develop your custom file I/O on top of it.
+Although you can successfully compile the boilerplate into a DLL, it won't do anything useful unless you add to it some meaningful code (and most likely PMNG will complain about it when trying to register it, and fail to do so).
 
-Although the boilerplate source code contains some useful comments, you'll still need to study the [File I/O Plugin Interface] documentation in order to create a plugin. Providing such documentation is beyond the scope of this project.
+Although the boilerplate source code contains some useful comments, you'll still need to study the [File I/O Plugin Interface] documentation in order to create a plugin.
+Providing such documentation is beyond the scope of this project.
 
 ## The Logger Module
 
-- [`mod_logger.pbi`][mod_logger]
+- [`mod_logger.pbi`][mod_logger] — v.0.0.3
 - [`mod_logger.md`][mod_logger Doc] — module documentation.
 
-This module provides file I/O plugins with a logger window that can be used to debug internal states and events during plugin development. The module exposes a few simple procedure to control the logger and print text to it.
+This module provides file I/O plugins with a logger window that can be used to debug internal states and events during plugin development.
+The module exposes a few simple procedure to control the logger and print text to it.
 
 For a practical example of its usage, see the ["FAKE" plugin][PoC fake]:
 
@@ -75,7 +79,10 @@ Currently there's only the ["FAKE" plugin][PoC fake] example, mainly intended as
 
 # Project Status
 
-Currently the project is in Alpha stage for the file I/O boilerplate hasn't been yet fully tested (although some working proof of concept plugins have already been created with it). Also, PMNG plugin interface and its documentation are undergoing some improvements. Until some demo plugins will be ready, and the whole boilerplate has been put to test, the project will remain in Alpha stage. This doesn't mean that the boilerplate is not usable, but it might still need fixes — it still provides a solid base to start from.
+Currently the project is in Alpha stage for the file I/O boilerplate hasn't been yet fully tested (although some working proof of concept plugins have already been created with it).
+Also, PMNG plugin interface and its documentation are undergoing some improvements.
+Until some demo plugins will be ready, and the whole boilerplate has been put to test, the project will remain in Alpha stage.
+This doesn't mean that the boilerplate is not usable, but it might still need fixes — it still provides a solid base to start from.
 
 Right now, the difficult part is working on a boilerplate which, by itself doesn't do anything, and at the same time work on some demo plugins to test its code — which requires updating the code on all sides as the works proceeds.
 
@@ -83,7 +90,8 @@ Right now, the difficult part is working on a boilerplate which, by itself doesn
 
 For the whole duration of the Alpha development stage all commits will be in the `alpha` branch, which will ultimately be squashed into `master` when the first stable release is reached.
 
-Furthermore, the Alpha branch will contain the binary DLLs of the compiled demo plugins, to compensate the lack of releases (which on GitHub allow attaching archives with precompiled binaries). Before squashing into `master` all binaries will be deleted and the project will ignore them from thereon.
+Furthermore, the Alpha branch will contain the binary DLLs of the compiled demo plugins, to compensate the lack of releases (which on GitHub allow attaching archives with precompiled binaries).
+Before squashing into `master` all binaries will be deleted and the project will ignore them from thereon.
 
 # System Requirements
 
@@ -96,7 +104,8 @@ File I/O plugins must be compiled with the following settings in the PureBasic I
 - Windows x86 (32 bit)
 - DLL executable, non thread-safe.
 
-Once you've compiled your plugin DLL, you only need to copy it into the `plugins` subfolder in the installation directory of Pro Motion. Depending on the bitness of your Windows operating system, the path of the `plugins` folder will be either:
+Once you've compiled your plugin DLL, you only need to copy it into the `plugins` subfolder in the installation directory of Pro Motion.
+Depending on the bitness of your Windows operating system, the path of the `plugins` folder will be either:
 
 - 32 bit OS: `%ProgramFiles%\cosmigo\Pro Motion NG\plugins\`
 - 64 bit OS: `%ProgramFiles(x86)%\cosmigo\Pro Motion NG\plugins\`
@@ -168,26 +177,28 @@ For a discussion regarding PMNG plugin development, see the following threads on
 <!-- badges -->
 
 [License badge]: https://img.shields.io/badge/License-MIT-blue
+[PB badge]: https://img.shields.io/badge/PureBasic-5.71%20LTS-yellow
+[PMNG badge]: https://img.shields.io/badge/Pro%20Motion%20NG-7.2.3.1-yellow
 [Travis badge]: https://travis-ci.com/tajmone/pmotion-purebasic.svg?branch=alpha
 [Travis link]: https://travis-ci.com/tajmone/pmotion-purebasic "Travis CI: EditorConfig validation status"
 
 <!-- project folders -->
 
+[PoC]: ./PoC/ "Navigate to folder"
 [PoC fake]: ./PoC/file-io/fake/ "Navigate to folder"
 [PoC file-io]: ./PoC/file-io/ "Navigate to folder"
-[PoC]: ./PoC/ "Navigate to folder"
 [tests]: ./tests/ "Navigate to folder"
 
 <!-- project files -->
 
-[LICENSE]: ./LICENSE "View MIT License file"
-[fileio pb]: ./pmotion_file-io.pbi "View PureBasic source file"
-[mod_logger]: ./mod_logger.pbi "View PureBasic source file"
-[mod_logger Doc]: ./mod_logger.md "Read the documentation of Logger Module"
 [.editorconfig]: ./.editorconfig "View EditorConfig settings file"
 [.gitattributes]: ./.gitattributes "View Git attributes settings file"
 [.gitignore]: ./.gitignore "View Git ignore settings file"
 [.travis.yml]: ./.travis.yml "View Travis CI settings file"
+[LICENSE]: ./LICENSE "View MIT License file"
+[fileio pb]: ./pmotion_file-io.pbi "View PureBasic source file"
+[mod_logger Doc]: ./mod_logger.md "Read the documentation of Logger Module"
+[mod_logger]: ./mod_logger.pbi "View PureBasic source file"
 [validate.sh]: ./validate.sh "View source script for code style validation"
 
 <!-- screenshots -->

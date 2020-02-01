@@ -1,5 +1,7 @@
 # FAKE Plugin
 
+    FAKE Plugin v0.0.8 (2020/02/01)
+
 A proof of concept plugin that simulates saving images to a fake file format (ext. "`.fake`") and demonstrates how to use the logger module for debugging the plugin functions calls.
 
 
@@ -33,7 +35,8 @@ The plugin also adds a new fake file format to the save/export dialogs:
 
 ![screenshot fake save][screenshot save dialog]
 
-When saving/exporting to the FAKE format no actual images are saved to disk. Instead, all the functions calls to the plugin DLL are logged in the plugin logging window.
+When saving/exporting to the FAKE format no actual images are saved to disk.
+Instead, all the functions calls to the plugin DLL are logged in the plugin logging window.
 
 This plugin was intended both as a practical example on how to use the PureBasic file I/O boilerplate, as well as an experimental learning tool for plugins developers, to study the order of functions calls associated with each operation in the PM user interface, and to track the details of data exchanges between PM and its plugins.
 
@@ -45,7 +48,8 @@ In the future this plugin might be improved by adding support for fake image loa
 
 The "FAKE Plugin" is released under the MIT License.
 
-> __IMPORTANT__ — If you distribute the "FAKE Plugin" in precompiled DLL form, then _you must_ include the full [`LICENSE`][LICENSE] file, which contains also the licenses of third party components used by the PureBasic compiler. If you're just redistributing the source code, the MIT License below is sufficient.
+> __IMPORTANT__ — If you distribute the "FAKE Plugin" in precompiled DLL form, then _you must_ include the full [`LICENSE`][LICENSE] file, which contains also the licenses of third party components used by the PureBasic compiler.
+> If you're just redistributing the source code, the MIT License below is sufficient.
 
 ```
 MIT License

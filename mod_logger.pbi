@@ -1,4 +1,4 @@
-﻿; v.0.0.2-ALPHA | 2019/05/09 | PureBasic 5.70 LTS x86
+﻿; v.0.0.3-ALPHA | 2020/02/01 | PureBasic 5.71 LTS x86
 ; ******************************************************************************
 ; *                                                                            *
 ; *                        Plugin Logger Window Module                         *
@@ -23,12 +23,29 @@
 ; +------------------------------+----------------------------------+
 ;
 ; ------------------------------------------------------------------------------
+
 DeclareModule logger
-  Declare.i OpenLogger(WinTitle$="Plugin Logger")
+  Declare.i OpenLogger(WinTitle$="")
   Declare.i CloseLogger()
   Declare.i ClearLogger()
   Declare.i PPrint(text$)
   Declare.i TSPrint(text$)
+  
+  Structure loggerSettings
+    WinTitle.s
+    WinWidth.i
+    WinHeight.i
+  EndStructure
+  
+  Settings.loggerSettings
+  
+  ;- Log Window Settings: Overridable Defaults
+  With Settings
+    \WinTitle = "Plugin Logger"
+    \WinWidth = 500
+    \WinHeight = 300
+  EndWith
+  
 EndDeclareModule
 
 Module logger
@@ -49,41 +66,47 @@ Module logger
                  WindowHeight(EventWindow()) -20)
   EndProcedure
   
-  ; /// Log Window Defaults ///
-  #LogWinW = 500
-  #LogWinH = 300
+  ;- Log Window Settings: Hard coded
   #LogWinFlags = #PB_Window_MinimizeGadget | #PB_Window_MaximizeGadget |
                  #PB_Window_SizeGadget | #PB_Window_BorderLess
   
-  
-  Procedure.i OpenLogger(WinTitle$ = "Plugin Logger")
+  Procedure.i OpenLogger(WinTitle$="")
     ; --------------------------------------------------------------------------
-    ; Creates the log window with title set to the parameter.
+    ; Creates the log window with title set to the parameter (if present) or
+    ; to logger::Settings\WinTitle (if parameter is omitted).
     ; Returns 1 on success, or 0 for failure.
     ; NOTE: Only one logger window can be created per plugin.
     ; --------------------------------------------------------------------------
-    Shared WinInfo
+    Shared Settings, WinInfo
     
     If IsWindow(WinInfo\WinID) ; Prevent creating multiple logger windows!
       ProcedureReturn #Failure
     EndIf
     
-    WinInfo\WinID = OpenWindow(#PB_Any, 0, 0, #LogWinW, #LogWinH, WinTitle$, #LogWinFlags)
-    If Not WinInfo\WinID
-      ProcedureReturn #Failure
-    EndIf
+    With Settings
+      If WinTitle$ <> ""
+        \WinTitle = WinTitle$
+      EndIf
+      WinInfo\WinID = OpenWindow(#PB_Any, 0, 0, \WinWidth, \WinHeight, \WinTitle, #LogWinFlags)   
+      If Not WinInfo\WinID
+        ProcedureReturn #Failure
+      EndIf
+    EndWith
+    
     ; Make the window sticky, otherwise it will be hidden behind PM NG:
     StickyWindow(WinInfo\WinID, #True) ;
     If LoadFont(0, "Consolas", 10)
       SetGadgetFont(#PB_Default, FontID(0))
     EndIf
     
-    WinInfo\LogID = EditorGadget(#PB_Any, 10, 10, #LogWinW -20, #LogWinH -20, #PB_Editor_ReadOnly)
-    If Not WinInfo\LogID
-      CloseWindow(WinInfo\WinID)
-      ProcedureReturn #Failure
-    EndIf
-    BindEvent(#PB_Event_SizeWindow, @LogWinResize())
+    With Settings
+      WinInfo\LogID = EditorGadget(#PB_Any, 10, 10, \WinWidth -20, \WinHeight -20, #PB_Editor_ReadOnly)
+      If Not WinInfo\LogID
+        CloseWindow(WinInfo\WinID)
+        ProcedureReturn #Failure
+      EndIf
+      BindEvent(#PB_Event_SizeWindow, @LogWinResize())
+    EndWith
     ProcedureReturn #Success
   EndProcedure
   
@@ -157,5 +180,13 @@ Module logger
     ProcedureReturn #Success
   EndProcedure
 EndModule ; logger
+
+; TODO: Add 'CLEAR' button.
+; TODO: Add 'COPY' button.
+; TODO: Add 'CLOSE' button.
+; TODO: When 'CLOSE' button is used, store logger dimensions and position in logger::Setting.
+; TODO: Add a new option that allows print procs to open the logger window if 
+;       it's closed, instead of just failing silently. The default behaviour
+;       should remain unchanged though.
 
 ; /// EOF ///
