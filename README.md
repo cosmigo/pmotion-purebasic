@@ -20,7 +20,7 @@ Copyright © 2019 Tristano Ajmone, [MIT License].
 
 - [Introduction](#introduction)
 - [Project Contents](#project-contents)
-    - [The File I/O Boilerplate](#the-file-io-boilerplate)
+    - [The File I/O Boilerplates](#the-file-io-boilerplates)
     - [The Logger Module](#the-logger-module)
     - [Plugin Examples](#plugin-examples)
 - [Project Status](#project-status)
@@ -46,20 +46,25 @@ The goal of this project is to provide PureBasic boilerplates for creating Pro M
     + [`/file-io/`][PoC file-io] — file I/O plugins:
         * [`/fake/`][PoC fake] — "FAKE" plugin example.
 - [`/tests/`][tests] — misc. modules tests.
-- [`pmotion_file-io.pbi`][fileio pb] — file I/O plugin boilerplate.
+- [`pmotion_file-io.pb`][fileio pb] — file I/O plugin boilerplate.
+- [`pmotion_file-io_barebones.pb`][fileio bbones pb] — file I/O plugin boilerplate, bare-bones version.
 - [`mod_logger.pbi`][mod_logger] — a developers' module that adds a log window to plugins.
 - [`LICENSE`][LICENSE] — MIT License.
 - [`validate.sh`][validate.sh] — validate code styles.
 
-## The File I/O Boilerplate
+## The File I/O Boilerplates
 
-- [`pmotion_file-io.pbi`][fileio pb] — v0.0.2
+- [`pmotion_file-io.pb`][fileio pb] — standard boilerplate v0.0.2
+- [`pmotion_file-io_barebones.pb`][fileio bbones pb] — bare-bones boilerplate v0.0.2
 
-The boilerplate is a code template to develop your custom file I/O on top of it.
+The boilerplate is a code template on top of which you can develop your custom file I/O.
 Although you can successfully compile the boilerplate into a DLL, it won't do anything useful unless you add to it some meaningful code (and most likely PMNG will complain about it when trying to register it, and fail to do so).
 
-Although the boilerplate source code contains some useful comments, you'll still need to study the [File I/O Plugin Interface] documentation in order to create a plugin.
-Providing such documentation is beyond the scope of this project.
+There are two versions of the boilerplate: the standard boilerplate and the bare-bones version.
+The former contains useful comments and macros to facilitate newbies creating their first plugins, whereas the latter is a stripped down version for those who already know their way through plugins development.
+
+Even though the standard boilerplate source code contains some useful comments, you'll still need to study the [File I/O Plugin Interface] documentation in order to create a plugin.
+Providing such documentation is currently beyond the scope of this project — but in the future we might add to this project a plugins documentation specifically written for PureBasic.
 
 ## The Logger Module
 
@@ -196,7 +201,8 @@ For a discussion regarding PMNG plugin development, see the following threads on
 [.gitignore]: ./.gitignore "View Git ignore settings file"
 [.travis.yml]: ./.travis.yml "View Travis CI settings file"
 [LICENSE]: ./LICENSE "View MIT License file"
-[fileio pb]: ./pmotion_file-io.pbi "View PureBasic source file"
+[fileio pb]: ./pmotion_file-io.pb "View PureBasic boilerplate source"
+[fileio bbones pb]: ./pmotion_file-io_barebones.pb "View PureBasic boilerplate source"
 [mod_logger Doc]: ./mod_logger.md "Read the documentation of Logger Module"
 [mod_logger]: ./mod_logger.pbi "View PureBasic source file"
 [validate.sh]: ./validate.sh "View source script for code style validation"
