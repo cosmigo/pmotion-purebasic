@@ -1,6 +1,6 @@
 # The Logger Module
 
-- [`mod_logger.pbi`][mod_logger] — v.0.0.4
+- [`mod_logger.pbi`][mod_logger] — v0.0.5
 
 This module provides file I/O plugins with a logger window that can be used to debug internal states and events during plugin development.
 The module exposes a few simple procedures to control the logger and print text to it.

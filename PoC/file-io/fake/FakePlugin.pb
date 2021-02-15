@@ -5,10 +5,10 @@
 ; *                         for Cosmigo Pro Motion NG                          *
 ; *                                                                            *
 ; ******************************************************************************
-#PLUGIN_VER$ = "0.0.8" ; 2020/02/01 | ALPHA
-#PLUGIN_PB_VER = 571   ; PureBasic 5.71 LTS x86
+#PLUGIN_VER$ = "0.0.9" ; 2021/02/15 | ALPHA
+#PLUGIN_PB_VER = 573   ; PureBasic 5.73 LTS x86
 
-; Copyright (C) by Tristano Ajmone, 2019. Released under MIT License.
+; Copyright (C) 2019-2021 by Tristano Ajmone. Released under MIT License.
 ; ------------------------------------------------------------------------------
 ; STATUS: INCOMPLETE...
 ; ------------------------------------------------------------------------------
@@ -202,9 +202,10 @@ ProcedureDLL.boolean initialize(*language, *version.Unicode, *animation.Ascii)
 EndProcedure
 
 Prototype ProtoProgressCallback( progress.int32 ) ; progress is int32
+Global progressCallback.ProtoProgressCallback
 
 ProcedureDLL setProgressCallback( *progressCallback )
-  progressCallback.ProtoProgressCallback = @*progressCallback
+  progressCallback = *progressCallback
   CallBack$ = Hexify(*progressCallback)
   logger::TSPrint("setProgressCallback( " + CallBack$ +" )")
 EndProcedure
@@ -329,7 +330,6 @@ ProcedureDLL.int32 getHeight()
 EndProcedure
 
 ProcedureDLL.int32 getImageCount() ; -> returns: int32
-  resetError                       ; -> This procedure can set error!
   logger::TSPrint("getImageCount()")
   ProcedureReturn 1
 EndProcedure

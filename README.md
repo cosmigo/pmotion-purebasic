@@ -9,7 +9,7 @@ Cosmigo [Pro Motion NG] plugins interfaces in [PureBasic].
 
 - https://github.com/tajmone/pmotion-purebasic
 
-Copyright © 2019 Tristano Ajmone, [MIT License].
+Copyright © 2019-2021 Tristano Ajmone, [MIT License].
 
 
 -----
@@ -54,8 +54,8 @@ The goal of this project is to provide PureBasic boilerplates for creating Pro M
 
 ## The File I/O Boilerplates
 
-- [`pmotion_file-io.pb`][fileio pb] — standard boilerplate v0.0.2
-- [`pmotion_file-io_barebones.pb`][fileio bbones pb] — bare-bones boilerplate v0.0.2
+- [`pmotion_file-io.pb`][fileio pb] — standard boilerplate v0.0.3
+- [`pmotion_file-io_barebones.pb`][fileio bbones pb] — bare-bones boilerplate v0.0.3
 
 The boilerplate is a code template on top of which you can develop your custom file I/O.
 Although you can successfully compile the boilerplate into a DLL, it won't do anything useful unless you add to it some meaningful code (and most likely PMNG will complain about it when trying to register it, and fail to do so).
@@ -68,7 +68,7 @@ Providing such documentation is currently beyond the scope of this project — b
 
 ## The Logger Module
 
-- [`mod_logger.pbi`][mod_logger] — v.0.0.4
+- [`mod_logger.pbi`][mod_logger] — v0.0.5
 - [`mod_logger.md`][mod_logger Doc] — module documentation.
 
 This module provides file I/O plugins with a logger window that can be used to debug internal states and events during plugin development.
@@ -129,7 +129,7 @@ This project is released under the MIT License.
 ```
 MIT License
 
-Copyright (C) 2019 Tristano Ajmone <tajmone@gmail.com>
+Copyright (C) 2019-2021 Tristano Ajmone <tajmone@gmail.com>
                    https://github.com/tajmone
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -182,8 +182,8 @@ For a discussion regarding PMNG plugin development, see the following threads on
 <!-- badges -->
 
 [License badge]: https://img.shields.io/badge/License-MIT-blue
-[PB badge]: https://img.shields.io/badge/PureBasic-5.71%20LTS-yellow
-[PMNG badge]: https://img.shields.io/badge/Pro%20Motion%20NG-7.2.3.1-yellow
+[PB badge]: https://img.shields.io/badge/PureBasic-5.73%20LTS-yellow
+[PMNG badge]: https://img.shields.io/badge/Pro%20Motion%20NG-7.2.7.0-yellow
 [Travis badge]: https://travis-ci.com/tajmone/pmotion-purebasic.svg?branch=alpha
 [Travis link]: https://travis-ci.com/tajmone/pmotion-purebasic "Travis CI: EditorConfig validation status"
 

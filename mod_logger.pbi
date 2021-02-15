@@ -1,4 +1,4 @@
-﻿; v.0.0.4-ALPHA | 2020/02/01 | PureBasic 5.71 LTS x86
+﻿; v.0.0.5-ALPHA | 2021/02/15 | PureBasic 5.73 LTS x86
 ; ******************************************************************************
 ; *                                                                            *
 ; *                        Plugin Logger Window Module                         *
@@ -6,7 +6,7 @@
 ; *                         for Cosmigo Pro Motion NG                          *
 ; *                                                                            *
 ; ******************************************************************************
-; Copyright (C) by Tristano Ajmone, 2019. Released under MIT License.
+; Copyright (C) 2019-2021 by Tristano Ajmone. Released under MIT License.
 ; ------------------------------------------------------------------------------
 ; This module provides file I/O plugins with a logger window that can be used to
 ; debug internal states and events during plugin development. The module exposes

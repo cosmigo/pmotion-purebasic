@@ -1,10 +1,12 @@
-﻿; 2019/05/09 | PureBasic 5.71 LTS x86
+﻿; 2021/02/15 | PureBasic 5.73 LTS x86
 ; ******************************************************************************
 ; *                                                                            *
 ; *                     Test File for Logger Window Module                     *
 ; *                                                                            *
+; *                               v.0.0.5-ALPHA                                *
+; *                                                                            *
 ; ******************************************************************************
-; Copyright (C) by Tristano Ajmone, 2019. Released under MIT License.
+; Copyright (C) 2019-2021 by Tristano Ajmone. Released under MIT License.
 ; ------------------------------------------------------------------------------
 
 CompilerIf Not #PB_Compiler_Debugger ; /// RUN ME FROM PB-IDE WITH DEBUGGER! ///

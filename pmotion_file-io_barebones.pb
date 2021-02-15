@@ -1,4 +1,4 @@
-﻿; "pmotion_file-io_barebones.pb" v0.0.2 | 2020/02/03    | PureBasic 5.71 LTS x86
+﻿; "pmotion_file-io_barebones.pb" v0.0.3 | 2021/02/15    | PureBasic 5.73 LTS x86
 ; ******************************************************************************
 ; *                                                                            *
 ; *                             Cosmigo Pro Motion                             *
@@ -6,7 +6,7 @@
 ; *              File I/O Plugin Interface (bare-bones template)               *
 ; *                                                                            *
 ; ******************************************************************************
-; Copyright (C) 2019 by Tristano Ajmone, MIT License.
+; Copyright (C) 2019-2021 by Tristano Ajmone, MIT License.
 ; https://github.com/tajmone/pmotion-purebasic
 ; ------------------------------------------------------------------------------
 #PLUGIN_SUPPORTS_ANIMATION       = #False
@@ -138,17 +138,8 @@ ProcedureDLL.i loadBasicData()
 EndProcedure
 
 ProcedureDLL.l getImageCount()
-  resetError
   Shared ImageData
   ; >>> Your code here >>>>>>>>>>>>>>>
-  
-  ; If there are no frames (ImageData\Frames = -1), or in case of any other
-  ; error, then you need to set an error and return #Failure. Example:
-  
-  ; If ImageData\Frames = -1
-  ;   setError("Explain why")
-  ;   ProcedureReturn #Failure
-  ; EndIf
   
   ; <<< Your code ends <<<<<<<<<<<<<<<
   ProcedureReturn ImageData\Frames
@@ -228,9 +219,10 @@ EndProcedure
 ; DLL Procs -> All Plugins
 
 Prototype ProtoProgressCallback( progress.l )
+Global progressCallback.ProtoProgressCallback
 
 ProcedureDLL setProgressCallback( *progressCallback )
-  progressCallback.ProtoProgressCallback = @*progressCallback
+  progressCallback = *progressCallback
 EndProcedure
 
 ProcedureDLL.i getFileExtension()

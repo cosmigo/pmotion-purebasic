@@ -1,4 +1,4 @@
-﻿; "pmotion_file-io.pb"                                 DRAFT v0.0.2 | 2020/02/01
+﻿; "pmotion_file-io.pb"                                 DRAFT v0.0.3 | 2021/02/15
 ; ******************************************************************************
 ; *                                                                            *
 ; *                             Cosmigo Pro Motion                             *
@@ -7,9 +7,9 @@
 ; *                                                                            *
 ; ******************************************************************************
 
-#PLUGIN_PB_VER = 571   ; PureBasic 5.71 LTS x86
+#PLUGIN_PB_VER = 573   ; PureBasic 5.73 LTS x86
 
-; Copyright (C) 2019 by Tristano Ajmone, MIT License.
+; Copyright (C) 2019-2021 by Tristano Ajmone, MIT License.
 ; https://github.com/tajmone/pmotion-purebasic
 ; ------------------------------------------------------------------------------
 ; STATUS: NOT FULLY TESTED IN REAL CASE SCENARIOS.
@@ -203,14 +203,18 @@ Declare resetImageData()
 ; *                                                                            *
 ;{******************************************************************************
 ; These are the mandatory DLL procedures required by every file I/O plugin.
-; Pro Motion expects them to be exported with these exact names.
+; Pro Motion expects them to be exported with these exact names and signature.
+
+; Even if you plug-in doesn't use some of these procedures (because it only
+; supports import or export) you still need to define all of them, otherwise the
+; plugin will fail the initialization test as "invalid" and will be ignored.
 
 ; Some procedures don't require any custom code from the plugin author (they can
 ; handle the call via the available data and settings) while others require the
 ; plugin author to add code, as indicated by the comments in the procedure body.
 
-; Here's a reference table with all the mandatory DLL procedures and wether they
-; need custom code additions, and if they can set error or not.
+; Below is a reference table with all the mandatory DLL procedures and whether
+; they need custom code additions, and if they can set error or not.
 
 ;   +-----------------------------+------------+---------------+
 ;   |     plugin DLL procedure    | your code? |  set error?   |
@@ -224,7 +228,7 @@ Declare resetImageData()
 ;   | getFileExtension()          |            |               |
 ;   | getFileTypeId()             |            |               |
 ;   | getHeight()                 |            |               |
-;   | getImageCount()             | needs code | can set error |
+;   | getImageCount()             | needs code |               |
 ;   | getRgbPalette()             | needs code |               |
 ;   | getTransparentColor()       | needs code |               |
 ;   | getWidth()                  |            |               |
@@ -258,9 +262,10 @@ ProcedureDLL.boolean initialize(*language, *version.Unicode, *animation.Ascii)
 EndProcedure
 
 Prototype ProtoProgressCallback( progress.int32 )
+Global progressCallback.ProtoProgressCallback
 
 ProcedureDLL setProgressCallback( *progressCallback )
-  progressCallback.ProtoProgressCallback = @*progressCallback
+  progressCallback = *progressCallback
 EndProcedure
 
 ;- /// Plugin Info ///
@@ -363,8 +368,7 @@ EndProcedure
 
 ; The next five procedures rely on you having correctly updated the ImageData
 ; structured variable during loadBasicData(), and will not require you to add
-; any code to them, except for getImageCount() which can setError() in case
-; no images were found.
+; any code to them.
 
 ProcedureDLL.boolean isAlphaEnabled()
   Shared ImageData
@@ -387,16 +391,8 @@ ProcedureDLL.int32 getTransparentColor()
 EndProcedure
 
 ProcedureDLL.int32 getImageCount()
-  resetError ; -> This procedure can set error!
   Shared ImageData
   ; >>> Your code here >>>>>>>>>>>>>>>
-  
-  ; If there are no frames (ImageData\Frames = -1) then you need to set an
-  ; error about this. Example:
-  
-  ; If ImageData\Frames = -1
-  ;   setError("Explain why")
-  ; EndIf
   
   ; <<< Your code ends <<<<<<<<<<<<<<<
   ProcedureReturn ImageData\Frames

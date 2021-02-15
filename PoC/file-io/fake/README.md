@@ -1,6 +1,6 @@
 # FAKE Plugin
 
-    FAKE Plugin v0.0.8 (2020/02/01)
+    FAKE Plugin v0.0.9 (2021/02/15)
 
 A proof of concept plugin that simulates saving images to a fake file format (ext. "`.fake`") and demonstrates how to use the logger module for debugging the plugin functions calls.
 
@@ -54,7 +54,7 @@ The "FAKE Plugin" is released under the MIT License.
 ```
 MIT License
 
-Copyright (C) 2019 Tristano Ajmone <tajmone@gmail.com>
+Copyright (C) 2019-2021 Tristano Ajmone <tajmone@gmail.com>
                    https://github.com/tajmone
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
