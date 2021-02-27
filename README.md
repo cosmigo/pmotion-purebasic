@@ -7,7 +7,7 @@
 
 Cosmigo [Pro Motion NG] plugins interfaces in [PureBasic].
 
-- https://github.com/tajmone/pmotion-purebasic
+- https://github.com/cosmigo/pmotion-purebasic
 
 Copyright © 2019-2021 Tristano Ajmone, [MIT License].
 
@@ -184,8 +184,8 @@ For a discussion regarding PMNG plugin development, see the following threads on
 [License badge]: https://img.shields.io/badge/License-MIT-blue
 [PB badge]: https://img.shields.io/badge/PureBasic-5.73%20LTS-yellow
 [PMNG badge]: https://img.shields.io/badge/Pro%20Motion%20NG-7.2.7.0-yellow
-[Travis badge]: https://travis-ci.com/tajmone/pmotion-purebasic.svg?branch=alpha
-[Travis link]: https://travis-ci.com/tajmone/pmotion-purebasic "Travis CI: EditorConfig validation status"
+[Travis badge]: https://travis-ci.com/cosmigo/pmotion-purebasic.svg?branch=alpha
+[Travis link]: https://travis-ci.com/cosmigo/pmotion-purebasic "Travis CI: EditorConfig validation status"
 
 <!-- project folders -->
 
@@ -224,9 +224,9 @@ For a discussion regarding PMNG plugin development, see the following threads on
 
 <!-- Cosmigo Pro Motion Assets -->
 
-[pmotion-assets]: https://github.com/tajmone/pmotion-assets "Visit the Cosmigo Pro Motion Assets repository on GitHub"
+[pmotion-assets]: https://github.com/cosmigo/pmotion-assets "Visit the Cosmigo Pro Motion Assets repository on GitHub"
 [pmotion-assets www]: https://tajmone.github.io/pmotion-assets/ "Visit the Cosmigo Pro Motion Assets website"
-[Cosmigo Pro Motion Assets]: https://github.com/tajmone/pmotion-assets "Visit the Cosmigo Pro Motion Assets repository on GitHub"
+[Cosmigo Pro Motion Assets]: https://github.com/cosmigo/pmotion-assets "Visit the Cosmigo Pro Motion Assets repository on GitHub"
 
 <!-- documentation -->
 

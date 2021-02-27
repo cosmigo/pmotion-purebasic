@@ -7,7 +7,7 @@
 ; *                                                                            *
 ; ******************************************************************************
 ; Copyright (C) 2019-2021 by Tristano Ajmone, MIT License.
-; https://github.com/tajmone/pmotion-purebasic
+; https://github.com/cosmigo/pmotion-purebasic
 ; ------------------------------------------------------------------------------
 #PLUGIN_SUPPORTS_ANIMATION       = #False
 #PLUGIN_SUPPORTS_PALETTE_EXTRACT = #False

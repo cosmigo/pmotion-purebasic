@@ -10,7 +10,7 @@
 #PLUGIN_PB_VER = 573   ; PureBasic 5.73 LTS x86
 
 ; Copyright (C) 2019-2021 by Tristano Ajmone, MIT License.
-; https://github.com/tajmone/pmotion-purebasic
+; https://github.com/cosmigo/pmotion-purebasic
 ; ------------------------------------------------------------------------------
 ; STATUS: NOT FULLY TESTED IN REAL CASE SCENARIOS.
 ; ******************************************************************************
