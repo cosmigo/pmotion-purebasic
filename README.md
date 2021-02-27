@@ -225,13 +225,13 @@ For a discussion regarding PMNG plugin development, see the following threads on
 <!-- Cosmigo Pro Motion Assets -->
 
 [pmotion-assets]: https://github.com/cosmigo/pmotion-assets "Visit the Cosmigo Pro Motion Assets repository on GitHub"
-[pmotion-assets www]: https://tajmone.github.io/pmotion-assets/ "Visit the Cosmigo Pro Motion Assets website"
+[pmotion-assets www]: https://cosmigo.github.io/pmotion-assets/ "Visit the Cosmigo Pro Motion Assets website"
 [Cosmigo Pro Motion Assets]: https://github.com/cosmigo/pmotion-assets "Visit the Cosmigo Pro Motion Assets repository on GitHub"
 
 <!-- documentation -->
 
-[File I/O Plugin Interface]: https://tajmone.github.io/pmotion-assets/File-IO_Agnostic-Interface.html
-[Developer Interface]: https://tajmone.github.io/pmotion-assets/Developer_Interface.html
+[File I/O Plugin Interface]: https://cosmigo.github.io/pmotion-assets/File-IO_Agnostic-Interface.html
+[Developer Interface]: https://cosmigo.github.io/pmotion-assets/Developer_Interface.html
 
 <!-- Cosmigo forum -->
 
